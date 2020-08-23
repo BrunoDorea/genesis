@@ -19,7 +19,7 @@ let shuffleOrder = () => {
     clickedOrder = [];
 
     for(let i in order){
-        let elementColor = createColorElement(order[i])
+        let elementColor = createColorElement(order[i]);
         lightColor(elementColor, Number(i) + 1);
     }
 }
@@ -31,14 +31,14 @@ let lightColor = (element, number) => {
         element.classList.add('selected');
     }, number - 250);
     setTimeout(() => {
-        element.classList.remove('selected') ;
+        element.classList.remove('selected');
     });
 }
 
 //checa se os botoes clicados são os mesmos da ordem gerada
 let checkOrder = () => {
     for(let i in clickedOrder) {
-        if( clickedOrder[i] != order[i]){ 
+        if(clickedOrder[i] != order[i]){
             gameOver();
             break;
         }
@@ -59,11 +59,10 @@ let click = (color) => {
         createColorElement(color).classList.remove('selected');
         checkOrder();
     },250);
-    
 }
 
 //função que retorna a cor
-let createColorElement = () => {
+let createColorElement = (color) => {
     if(color == 0){
         return green;
     } else if(color == 1){
@@ -76,14 +75,14 @@ let createColorElement = () => {
 }
 
 //função para proximo nivel
-let nextLevel = () =>{
+let nextLevel = () => {
     score++;
     shuffleOrder();
 }
 
 //função para game over
 let gameOver = () => {
-    alert(`Pontuação: ${score}\n
+    alert(`Pontuação: ${score}!\n
     Você perdeu o jogo!\n
     Clique em OK para iniciar um novo jogo.`);
     order = [];
@@ -94,17 +93,17 @@ let gameOver = () => {
 
 //função inicio de jogo
 let playGame = () => {
-    alert(`Bem Vindo ao Gênesis! Iniciando novo jogo!`)
+    alert('Bem vindo ao Gênesis! Iniciando novo jogo!');
     score = 0;
 
     nextLevel();
 }
 
 //eventos de clique para as cores
-green.onClick = () => click(0);
-red.onClick = () => click(1);
-yellow.onClick = () => click(2);
-blue.onClick = () => click(3);
+green.onclick = () => click(0);
+red.onclick = () => click(1);
+yellow.onclick = () => click(2);
+blue.onclick = () => click(3);
 
 // green.addEventListener('click', click(0));
 // red.addEventListener('click', click(1));
